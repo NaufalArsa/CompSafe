@@ -84,9 +84,7 @@ class Model {
         return $stmt->affected_rows > 0;
     } 
 
-
     // FITUR APPLY MECHANIC [HAL]
-
     public function addMechanic($fname, $lname, $contact, $specialist) {
         require '../../database/connection.php';
         $name = $fname . ' ' . $lname;
