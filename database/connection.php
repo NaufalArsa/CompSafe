@@ -3,7 +3,7 @@
 $server = "localhost";
 $username = "root";
 $password = "";
-$database = "serviceit";
+$database = "comp-safe";
 
 $connection = mysqli_connect($server, $username, $password, $database);
 

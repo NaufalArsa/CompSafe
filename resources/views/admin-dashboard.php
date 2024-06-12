@@ -3,7 +3,7 @@
   include_once "../../app/Controller.php";
 
   if (!isset($_SESSION['loginAdmin']) || $_SESSION['loginAdmin'] !== true) {
-      header("location: ../login-admin.php");
+      header("location: .././admin/login.php");
       exit;
   }
 
@@ -28,7 +28,7 @@
 <body>
 
     <!-- Admin Header Section -->
-    <section class="bg-white dark:bg-gray-900 h-full bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
+    <section class="pb-8 bg-white dark:bg-gray-900 h-full bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
         <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
             
             <div class="items-center gap-4 mb-8">
@@ -75,7 +75,7 @@
         <div class="bg-gradient-to-b from-blue-50 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0"></div>
 
         <!-- Table for Data Supply -->
-        <div class="pb-8 px-4 mx-auto max-w-screen-xl relative overflow-x-auto rounded-lg">
+        <div class="mx-52 max-w-screen-xl relative overflow-x-auto rounded-lg">
         <?php 
 
             if(!empty($dataSupply)) {
@@ -98,23 +98,21 @@
                         <th scope="col" class="px-6 py-3">
                             Harga
                         </th>
-                        <th scope="col" class="px-6 py-3">
-                            
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-                foreach ($dataSupply as $row) {
-                    echo "<tr>";
-                    echo "<td>{$row['ID_BARANG']}</td>";
-                    echo "<td>{$row['NAMA_SUPPLY']}</td>";
-                    echo "<td>{$row['STOK_SUPPLY']}</td>";
-                    echo "<td>{$row['HARGA_SUPPLY']}</td>";
-                    echo "</tr>";
-                }
-                ?>
+                    <?php
+                    foreach ($dataSupply as $row) {
+                        echo "<tr class=\"bg-white border-b dark:bg-gray-800 dark:border-gray-700\">";
+                        echo "<th scope=\"row\" class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white\">{$row['ID_BARANG']}</th>";
+                        echo "<td class=\"px-6 py-4\">{$row['NAMA_SUPPLY']}</td>";
+                        echo "<td class=\"px-6 py-4\">{$row['STOK_SUPPLY']}</td>";
+                        echo "<td class=\"px-6 py-4\">{$row['HARGA_SUPPLY']}</td>";
+                        echo "</tr>";
+                    }
+                    ?>
                 </tbody>
+
             </table>
 
             <?php

@@ -27,7 +27,7 @@ class Model {
     // FITUR REQUEST [ARVIN]
     public function showrequest(){
         require __DIR__ . "/../database/Connection.php";
-        $query = mysqli_query($connection, "SELECT * FROM serviceit.service");
+        $query = mysqli_query($connection, "SELECT * FROM service");
         // Fetch data and store it in $this->hasil
         while ($row = mysqli_fetch_assoc($query)) {
             $this->hasil[] = $row;
@@ -37,8 +37,15 @@ class Model {
     }
     public function addRequest($namaPelanggan, $kontakPelanggan, $merkDevice, $deskripsi) {
         require __DIR__ . "/../database/Connection.php";
-        $stmt = $connection->prepare("INSERT INTO SERVICEIT.SERVICE (NAMA_PELANGGAN, KONTAK_PELANGGAN, MERK_DEVICE, DESKRIPSI) VALUES (?, ?, ?, ?)");
+        $stmt = $connection->prepare("INSERT INTO SERVICE (NAMA_PELANGGAN, KONTAK_PELANGGAN, MERK_DEVICE, DESKRIPSI) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $namaPelanggan, $kontakPelanggan, $merkDevice, $deskripsi);
+        $stmt->execute();
+    }
+
+    public function deleteRequest($id) {
+        require __DIR__ . "/../database/Connection.php";
+        $stmt = $connection->prepare("DELETE FROM service WHERE ID_SERVICE = ?");
+        $stmt->bind_param("s", $id);
         $stmt->execute();
     }
 
@@ -93,14 +100,14 @@ class Model {
         $stmt = $connection->prepare($query);
         $stmt->bind_param("ssss", $name, $contact, $specialist, $applicant);
         $stmt->execute();
-        $result = mysqli_query($connection, "SELECT ID_MECHANIC FROM SERVICEIT.MECHANIC WHERE KONTAK_MECHANIC = '$contact' ORDER BY ID_MECHANIC DESC LIMIT 1");
+        $result = mysqli_query($connection, "SELECT ID_MECHANIC FROM MECHANIC WHERE KONTAK_MECHANIC = '$contact' ORDER BY ID_MECHANIC DESC LIMIT 1");
         $row = mysqli_fetch_assoc($result);
         return $row['ID_MECHANIC'];
     }
 
     public function findMechianic($contact, $id) {
         require '../../database/connection.php';
-        $result = mysqli_query($connection, "SELECT NAMA_MECHANIC, KONTAK_MECHANIC, ID_SPECIALIST, ID_MECHANIC FROM SERVICEIT.MECHANIC WHERE KONTAK_MECHANIC = '$contact' AND ID_MECHANIC = '$id'");
+        $result = mysqli_query($connection, "SELECT NAMA_MECHANIC, KONTAK_MECHANIC, ID_SPECIALIST, ID_MECHANIC FROM MECHANIC WHERE KONTAK_MECHANIC = '$contact' AND ID_MECHANIC = '$id'");
         $row = mysqli_fetch_assoc($result);
         return $row;
     }
@@ -108,7 +115,7 @@ class Model {
     public function editMechianic($fname, $lname, $contact, $specialist, $id) {
         require '../../database/connection.php';
         $name = $fname . ' ' . $lname;
-        $query = "UPDATE SERVICEIT.MECHANIC SET NAMA_MECHANIC = ?, KONTAK_MECHANIC = ?, ID_SPECIALIST = ? WHERE ID_MECHANIC = ?";
+        $query = "UPDATE MECHANIC SET NAMA_MECHANIC = ?, KONTAK_MECHANIC = ?, ID_SPECIALIST = ? WHERE ID_MECHANIC = ?";
         $stmt = $connection->prepare($query);
         $stmt->bind_param("ssss", $name, $contact, $specialist, $id);
         $stmt->execute();
@@ -116,7 +123,7 @@ class Model {
 
     public function deleteMechanic($id) {
         require '../../database/connection.php';
-        $query = "DELETE FROM SERVICEIT.MECHANIC WHERE ID_MECHANIC = ?";
+        $query = "DELETE FROM MECHANIC WHERE ID_MECHANIC = ?";
         $stmt = $connection->prepare($query);
         $stmt->bind_param("s", $id);
         $stmt->execute();

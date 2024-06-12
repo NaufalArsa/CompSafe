@@ -20,6 +20,10 @@ class Controller {
         $this->model->addrequest($namaPelanggan, $kontakPelanggan, $merkDevice, $deskripsi);
     }
 
+    public function deleteRequest($id){
+        $this->model->deleteRequest($id);
+    }
+
     public function saveReview($review) {
         $userId = $_SESSION['user_id'];
         return $this->model->saveReview($review, $userId);
