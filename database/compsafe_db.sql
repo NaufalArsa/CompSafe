@@ -221,15 +221,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID_USER`, `USERNAME`, `PASSWORD`, `ROLE`) VALUES
-(7, 'Naufal', 'naufalarsa', 'A'),
-(8, 'Ryan', 'ryan123', 'U'),
-(9, 'Ryan', 'ryan123', 'U'),
-(10, 'Hal', 'hal123', 'U'),
-(11, 'Arvin', 'arvin123', 'U'),
-(12, 'Alam', 'alam123', 'U'),
-(13, 'Yusuf', 'yusuf123', 'A'),
-(14, 'Ghatfan', 'ghatfan123', 'M'),
-(15, 'Zani', 'zani123', 'M');
+(1, 'Naufal', 'naufal123', 'U'),
+(2, 'Yusuf', 'yusuf123', 'A'),
+(3, 'Ghatfan', 'ghatfan123', 'M'),
+(4, 'Zani', 'zani123', 'M');
 
 --
 -- Indexes for dumped tables

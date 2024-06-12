@@ -6,7 +6,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = mysqli_real_escape_string($connection, $_POST['username']);
     $password = mysqli_real_escape_string($connection, $_POST['password']);
 
-    $query = "SELECT ID_USER, USERNAME FROM USER WHERE USERNAME='$username' AND PASSWORD='$password' AND ROLE='A'";
+    $hashedPassword = sha1($password);
+
+    $query = "SELECT ID_USER, USERNAME FROM USER WHERE USERNAME='$username' AND PASSWORD='$hashedPassword' AND ROLE='A'";
     $result = mysqli_query($connection, $query);
 
     if (mysqli_num_rows($result) == 1) {
@@ -14,7 +16,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
         $_SESSION['username'] = $user['USERNAME'];
         $_SESSION['user_id'] = $user['ID_USER'];
-        $_SESSION['password'] = $password;
+        $_SESSION['password'] = $hashedPassword;
         $_SESSION['loginAdmin'] = true;
 
         header("Location: ../resources/views/admin-dashboard.php");

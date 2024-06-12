@@ -44,11 +44,29 @@ class Model {
 
     public function deleteRequest($id) {
         require __DIR__ . "/../database/Connection.php";
-        $stmt = $connection->prepare("DELETE FROM service WHERE ID_SERVICE = ?");
-        $stmt->bind_param("s", $id);
-        $stmt->execute();
+        
+        // Start transaction
+        $connection->begin_transaction();
+        
+        try {
+            // Delete related rows from transaksi table
+            $stmt = $connection->prepare("DELETE FROM transaksi WHERE ID_SERVICE = ?");
+            $stmt->bind_param("s", $id);
+            $stmt->execute();
+            
+            // Delete row from service table
+            $stmt = $connection->prepare("DELETE FROM service WHERE ID_SERVICE = ?");
+            $stmt->bind_param("s", $id);
+            $stmt->execute();
+            
+            // Commit transaction
+            $connection->commit();
+        } catch (Exception $e) {
+            // Rollback transaction on error
+            $connection->rollback();
+            throw $e;
+        }
     }
-
 
     // FITUR REVIEW [ALAM]
     public function saveReview($review, $userId) {
