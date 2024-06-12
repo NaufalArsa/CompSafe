@@ -221,10 +221,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID_USER`, `USERNAME`, `PASSWORD`, `ROLE`) VALUES
-(1, 'Naufal', 'naufal123', 'U'),
-(2, 'Yusuf', 'yusuf123', 'A'),
-(3, 'Ghatfan', 'ghatfan123', 'M'),
-(4, 'Zani', 'zani123', 'M');
+(1, 'Naufal', SHA('naufal123'), 'A'),
+(2, 'Yusuf', SHA('yusuf123'), 'A'),
+(3, 'Ghatfan', SHA('ghatfan123'), 'M'),
+(4, 'Zani', SHA('zani123'), 'M');
 
 --
 -- Indexes for dumped tables
