@@ -12,6 +12,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $stmt->execute();
 
     header("Location: user/login.php");
+
 }
 ?>
 

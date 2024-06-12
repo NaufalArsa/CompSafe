@@ -152,7 +152,7 @@
                     <div class="p-10 rounded-lg">
                         <h2 class="text-3xl font-bold mb-5">What will you do?</h2>
                         <p class="text-gray-500">
-                            As a Computer Service Mechanic at DoctorPC, you will be an integral part
+                            As a Computer Service Mechanic at CompSafe, you will be an integral part
                             of our dedicated team, responsible for delivering exceptional computer services
                             to our clients. This role combines technical expertise with a customer-centric
                             approach, ensuring that our clients' computer systems operate at peak performance.

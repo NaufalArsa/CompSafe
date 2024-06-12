@@ -54,11 +54,14 @@
                         echo $user_id; 
                         ?>
                     </div>
+                    <div class="mt-4">
+                        <a href="../logout.php?act=admin" class="w-full text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Log Out</a>
+                    </div>    
                 </div>
             </div>
 
-            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">DoctorPC Admin Dashboard</h1>
-            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">Here at DoctorPC we focus on markets where technology, innovation, and capital can unlock long-term value to boost your productivity.</p>
+            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">CompSafe Admin Dashboard</h1>
+            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">Here at CompSafe we focus on markets where technology, innovation, and capital can unlock long-term value to boost your productivity.</p>
             <form class="w-full max-w-md mx-auto">   
                 <label for="default-email" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative">
